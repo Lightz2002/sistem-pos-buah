@@ -17,7 +17,7 @@ $type = $type ?? 'submit';
 @else
     <button
         {{ $attributes->merge([
-            'type' => 'submit',
+            'type' => $type,
             'class' => 'inline-flex items-center px-4 py-2
             bg-teal-500 border border-transparent rounded-md font-semibold text-xs
             text-white uppercase tracking-widest hover:bg-teal-700 focus:bg-teal-700

@@ -20,50 +20,50 @@
         </div>
     </div>
 
-    <script>
+<script>
 
-        const editButtons = document.querySelectorAll('.edit-user-button');
-    
-        var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    
-        editButtons.forEach(button => {
-            const userId = button.getAttribute('data-user-id');
-            button.addEventListener('click', function () {
-                Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, accept!'
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    fetch(`/users/${userId}`, {
-                            method: 'DELETE',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': csrfToken
-                            },
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            Swal.fire(
-                            'Success',
-                            data.message,
-                            'success'
-                            )
+    const editButtons = document.querySelectorAll('.edit-user-button');
 
-                            setTimeout(function() {
-                                location.reload();
-                            }, 2000);
-                        })
-                        .catch(error => {
-                            Swal.fire('Error', 'An error occurred', 'error');
-                        });
-                }
-                })
-            });
-        })
-    </script>
+    var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+    editButtons.forEach(button => {
+        const userId = button.getAttribute('data-user-id');
+        button.addEventListener('click', function () {
+            Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, accept!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`/users/${userId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrfToken
+                        },
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        Swal.fire(
+                        'Success',
+                        data.message,
+                        'success'
+                        )
+
+                        setTimeout(function() {
+                            location.reload();
+                        }, 2000);
+                    })
+                    .catch(error => {
+                        Swal.fire('Error', 'An error occurred', 'error');
+                    });
+            }
+            })
+        });
+    })
+</script>
 </x-app-layout>

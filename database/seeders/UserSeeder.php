@@ -36,5 +36,12 @@ class UserSeeder extends Seeder
         $userAdminData->password = Hash::make('123');
         $userAdminData->assignRole('sales');
         $userAdminData->save();
+
+        $userAdminData = new User();
+        $userAdminData->name = 'customer1';
+        $userAdminData->email = 'customer1@gmail.com';
+        $userAdminData->password = Hash::make('123');
+        $userAdminData->assignRole('customer');
+        $userAdminData->save();
     }
 }

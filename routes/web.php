@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CartItemsController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
+use App\Livewire\Cart;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,4 +41,27 @@ Route::middleware('auth')->controller(UserController::class)->group(function () 
     Route::delete('/users/{user}', 'destroy')->name('users.destroy');
 });
 
+Route::middleware('auth')->controller(ProductController::class)->group(function () {
+    Route::get('/products', 'index')->name('products');
+    Route::get('/products/create', 'create')->name('products.create');
+    Route::post('/products', 'store')->name('products.store');
+    Route::get('/products/{product}/edit', 'edit')->name('products.edit');
+    Route::put('/products/{product}', 'update')->name('products.update');
+    Route::delete('/products/{product}', 'destroy')->name('products.destroy');
+});
+
+Route::middleware('auth')->controller(CartItemsController::class)->group(function () {
+    Route::get('/cartitems', 'index')->name('cartitems');
+    Route::get('/cartitems/create', 'create')->name('cartitems.create');
+    Route::post('/cartitems', 'store')->name('cartitems.store');
+    // Route::get('/cartitems/{product}/edit', 'edit')->name('cartitems.edit');
+    // Route::put('/cartitems/{product}', 'update')->name('cartitems.update');
+    Route::delete('/cartitems/{item}', 'destroy')->name('cartitems.destroy');
+});
+
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/cartitems', Cart::class)->name('cartitems');
+});
 require __DIR__.'/auth.php';
