@@ -6,7 +6,7 @@ use App\Traits\CastsAndMutatorsTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Status extends Model
+class Order extends Model
 {
     use HasFactory, CastsAndMutatorsTrait;
 
