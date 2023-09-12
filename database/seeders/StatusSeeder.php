@@ -13,7 +13,7 @@ class StatusSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('products')->insert([
+        DB::table('status')->insert([
             [
                 'name' => 'rejected'
             ],
