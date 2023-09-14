@@ -15,9 +15,11 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
-            $table->integer('account_no');
+            $table->date('date');
+            $table->string('account_no', 50);
             $table->string('account_name', 200);
             $table->string('account_bank', 200);
+            $table->string('payment_proof', 200);
             $table->timestamps();
         });
     }

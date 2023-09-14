@@ -21,10 +21,13 @@ class StatusSeeder extends Seeder
                 'name' => 'verifying'
             ],
             [
+                'name' => 'packing'
+            ],
+            [
                 'name' => 'delivering'
             ],
             [
-                'name' => 'completed'
+                'name' => 'received'
             ],
         ]);
     }

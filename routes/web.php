@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CartItemsController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Livewire\Cart;
+use App\Livewire\CreatePayment;
+use App\Livewire\ListOrder;
+use App\Livewire\ShowOrder;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,18 +53,19 @@ Route::middleware('auth')->controller(ProductController::class)->group(function 
     Route::delete('/products/{product}', 'destroy')->name('products.destroy');
 });
 
-Route::middleware('auth')->controller(CartItemsController::class)->group(function () {
-    Route::get('/cartitems', 'index')->name('cartitems');
-    Route::get('/cartitems/create', 'create')->name('cartitems.create');
-    Route::post('/cartitems', 'store')->name('cartitems.store');
-    // Route::get('/cartitems/{product}/edit', 'edit')->name('cartitems.edit');
-    // Route::put('/cartitems/{product}', 'update')->name('cartitems.update');
-    Route::delete('/cartitems/{item}', 'destroy')->name('cartitems.destroy');
-});
-
-
-
 Route::middleware('auth')->group(function () {
     Route::get('/cartitems', Cart::class)->name('cartitems');
 });
+
+Route::middleware('auth')->group(function () {
+    Route::get('/payments/create', CreatePayment::class)->name('payments.create');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/orders', ListOrder::class)->name('orders');
+    Route::get('/orders/{order}', ShowOrder::class)->name('orders.show');
+    Route::post('/orders/{order}/status', [OrderController::class, 'changeStatus'])->name('orders.changeStatus');
+});
+
+
 require __DIR__.'/auth.php';

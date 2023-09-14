@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('cart_items', function (Blueprint $table) {
-            $table->foreignIdFor(Order::class);
+            $table->foreignIdFor(Order::class)->nullable();
         });
     }
 

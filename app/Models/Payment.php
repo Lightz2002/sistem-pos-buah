@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\CastsAndMutatorsTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Payment extends Model
 {
@@ -25,5 +26,13 @@ class Payment extends Model
         // Merge the trait's guarded with the model's guarded
         $this->guarded = array_merge($this->guarded, $this->traitGuarded);
         $this->casts = array_merge($this->casts, $this->traitCasts);
+    }
+
+    public function order(): BelongsTo {
+        return $this->belongsTo(Order::class);
+    }
+
+    public function user(): BelongsTo {
+        return $this->belongsTo(User::class);
     }
 }

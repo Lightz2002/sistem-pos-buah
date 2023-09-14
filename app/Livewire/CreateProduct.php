@@ -26,7 +26,11 @@ class CreateProduct extends Component
 
         $this->form->validate();
 
-        $imagePath = $this->form->image->store('images');
+        $fileName = $this->form->image->getClientOriginalName();
+
+        $imageName = now()->timestamp . '_' . $fileName;
+        $imagePath = $this->form->image->storeAs('images', $imageName, 'public');
+
         $this->form->image = $imagePath;
 
         Product::create(

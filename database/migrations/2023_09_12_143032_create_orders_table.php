@@ -16,6 +16,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
             $table->longText('customer_address');
             $table->boolean('is_pick_up')->default(false);
             $table->decimal('total_amount', 10, 2)->default(0);

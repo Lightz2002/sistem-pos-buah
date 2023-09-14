@@ -13,11 +13,13 @@ abstract class Table extends Component
     public $page = 1;
     public $perPage = 10;
     public $search = '';
+    public $filterComponent = '';
     public $createUrl = '';
 
     protected $queryString = [
         'search' => ['except' => ''],
         'page' => ['except' => 1],
+        'status' => ['except' => '']
     ];
 
 

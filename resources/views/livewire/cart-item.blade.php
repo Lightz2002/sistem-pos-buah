@@ -23,7 +23,7 @@
 
             <p class="ml-auto">Subtotal: 
 
-                <span class="font-bold text-teal-400">Rp . {{ number_format($item->quantity * $item->product->price) }}</span>
+                <span class="font-bold text-teal-400">Rp{{ number_format($item->quantity * $item->product->price) }}</span>
             </p>
 
         </div>

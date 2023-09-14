@@ -21,7 +21,7 @@ class Cart extends Component
 
 
   public function mount() {
-    $this->cartitems = CartItems::with(['product', 'user'])->self()->get();
+    $this->cartitems = CartItems::with(['product', 'user'])->self()->notCheckOut()->get();
     $this->totalAmount = $this->sumItemTotal();
   }
 

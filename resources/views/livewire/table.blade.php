@@ -1,9 +1,16 @@
 <div class="output">
+    {{-- Filter Bar --}}
+
+    @if ($this->filterComponent)
+        <x-dynamic-component :component="$this->filterComponent">
+        </x-dynamic-component>
+    @endif
+
     {{-- Search Bar --}}
     <div class="mb-4 flex items-baseline justify-evenly">
         <div class="w-1/2 relative">
             <input wire:model.live="search" name="search" type="search" placeholder="Search..."
-                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full">
+                class="border-gray-300 focus:border-teal-500 focus:ring-teal-500 rounded-md shadow-sm w-full">
 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="stroke-slate-400 w-6 h-6 absolute top-1/2 right-10 translate-y-[-50%]">
@@ -19,7 +26,6 @@
     </div>
 
     {{-- Table --}}
-
     <div class="mb-4  overflow-hidden rounded-lg shadow-md">
         <table class="table-auto w-full  text-left  border-slate-200">
             <thead>

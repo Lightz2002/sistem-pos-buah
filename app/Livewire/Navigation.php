@@ -12,7 +12,7 @@ class Navigation extends Component
 
     #[On('add-to-cart')]
     public function mount() {
-        $this->totalCartItems = CartItems::self()->get()->count();
+        $this->totalCartItems = CartItems::self()->notCheckOut()->get()->count();
     }
 
     #[On('cart-item-removed')]

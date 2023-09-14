@@ -33,6 +33,10 @@ class CartItems extends Model
         return $query->where('user_id', auth()->user()->id);
     }
 
+    public function scopeNotCheckOut($query) {
+        return $query->where('has_checkout', false);
+    }
+
     public function product(): BelongsTo {
         return $this->belongsTo(Product::class);
     }

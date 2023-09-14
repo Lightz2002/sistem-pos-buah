@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Forms;
 use Livewire\Attributes\Rule;
-use Livewire\WithFileUploads;
 
 use Livewire\Form;
 
