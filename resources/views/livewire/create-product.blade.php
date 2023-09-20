@@ -45,7 +45,7 @@
     </div>
 
     <div>
-        <x-input-label for="image" :value="__('Description')" />
+        <x-input-label for="image" :value="__('Image')" />
         @if ($this->form->image)
             <img src="{{ $this->form->image->temporaryUrl() }}">
         @endif

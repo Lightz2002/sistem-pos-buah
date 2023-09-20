@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 200);
             $table->integer('quantity')->default(0);
+            $table->integer('size')->default(0);
             $table->integer('sold_quantity')->default(0);
             $table->decimal('price', 10, 2)->default(0);
             $table->string('unit', 50);

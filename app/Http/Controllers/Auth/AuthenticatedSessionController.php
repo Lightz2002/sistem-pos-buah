@@ -29,6 +29,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        if (auth()->user()->hasRole('customer')) return redirect()->route('products');
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 

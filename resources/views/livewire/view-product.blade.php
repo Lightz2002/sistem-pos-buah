@@ -21,8 +21,14 @@
         </div>
 
         <div>
+            <x-input-label for="size" :value="__('Size')" class="text-gray-200 dark:text-gray-800 md:text-lg"/>
+            <x-text-input :readonly="!$isEdit" id="size" name="size" model="form.size" class="{{ $isEdit ? '' : 'bg-transparent border-none p-0 shadow-none' }} md:text-lg"   />
+            <x-input-error :messages="$errors->get('form.size')" class="mt-2" />
+        </div>
+
+        <div>
             <x-input-label for="quantity" :value="__('Quantity')" class="text-gray-200 dark:text-gray-800 md:text-lg"/>
-            <x-text-input :readonly="!$isEdit" id="quantity" quantity="quantity" model="form.quantity" class="{{ $isEdit ? '' : 'bg-transparent border-none p-0 shadow-none' }} md:text-lg"   />
+            <x-text-input :readonly="!$isEdit" id="quantity" name="quantity" model="form.quantity" class="{{ $isEdit ? '' : 'bg-transparent border-none p-0 shadow-none' }} md:text-lg"   />
             <x-input-error :messages="$errors->get('form.quantity')" class="mt-2" />
         </div>
 

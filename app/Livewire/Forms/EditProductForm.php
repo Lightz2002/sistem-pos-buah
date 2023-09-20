@@ -10,9 +10,10 @@ class EditProductForm extends Form
 {
 
   public $name = '';
+  public $size = 52;
   public $quantity = 1;
   public $price = 10000;
-  public $unit = 'pcs';
+  public $unit = 'dus';
   public $description = '';
   public $image;
 

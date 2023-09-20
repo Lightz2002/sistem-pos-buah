@@ -30,6 +30,7 @@ class Status extends Model
 
     public function scopePaid($query) {return $query->where('name', 'paid');}
     public function scopeRejected($query) {return $query->where('name', 'rejected');}
+    public function scopeReceived($query) {return $query->where('name', 'received');}
     public function scopeVerifying($query) {return $query->where('name', 'verifying');}
     public function scopeDelivering($query) {return $query->where('name', 'delivering');}
     public function scopeCompleted($query) {return $query->where('name', 'completed');}

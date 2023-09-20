@@ -15,7 +15,7 @@ class CreateProductForm extends Form
   #[Rule('required|numeric')]
   public $price = 10000;
   #[Rule('required|min:2')]
-  public $unit = 'pcs';
+  public $unit = 'dus';
   #[Rule('required')]
   public $description = '';
   #[Rule('image|max:1024')]

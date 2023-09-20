@@ -38,6 +38,12 @@
             </main>
         </div>
         @livewireScripts
+        @livewireChartsScripts
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+        
+        {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
+        <script src="{{ asset('js/Chart.min.js') }}"></script>
+
+
     </body>
 </html>

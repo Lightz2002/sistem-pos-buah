@@ -34,12 +34,16 @@ class Order extends Model
         return $this->belongsTo(Payment::class);
     }
 
-    public function user(): BelongsTo {
-        return $this->belongsTo(User::class);
+    public function customer(): BelongsTo {
+        return $this->belongsTo(User::class, 'customer_id');
     }
 
     public function order_items(): HasMany {
         return $this->hasMany(CartItems::class);
+    }
+
+    public function scopeToday($query) {
+        return $query->where('date', now()->format('Y-m-d'));
     }
 
     public function scopeFilter($query, string $search, string $status) {

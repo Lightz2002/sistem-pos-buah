@@ -18,3 +18,50 @@
         </div>
     </div>
 </div>
+
+
+<script>
+
+    const statusButtons = document.querySelectorAll('.show-status-modal');
+  
+    var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+  
+    statusButtons.forEach(button => {
+        const orderId = button.getAttribute('data-order-id');
+        const orderStatus = button.getAttribute('data-order-status');
+        button.addEventListener('click', function () {
+            Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, accept!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`/orders/${orderId}/status`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrfToken
+                        },
+                        body: JSON.stringify({ status: orderStatus }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        Swal.fire(
+                        'Success',
+                        data.message,
+                        'success'
+                        )
+                    })
+                    .catch(error => {
+                        Swal.fire('Error', 'An error occurred', 'error');
+                    });
+            }
+            })
+        });
+    })
+  
+  </script>

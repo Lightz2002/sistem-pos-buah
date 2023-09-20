@@ -28,6 +28,7 @@ class ViewProduct extends Component
 
     public function mount() {
         $this->form->name = $this->product->name;
+        $this->form->size = $this->product->size;
         $this->form->unit = $this->product->unit;
         $this->form->price = $this->product->price;
         $this->form->quantity = $this->product->quantity;
@@ -62,6 +63,8 @@ class ViewProduct extends Component
         $this->product->update(
             $this->form->all()
         );
+
+        session()->flash('message', 'Product Updated Successfully');
 
         return redirect()->route('products');
     }

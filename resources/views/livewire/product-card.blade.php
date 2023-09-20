@@ -23,7 +23,7 @@
             </div>
             <div class="product-detail p-4">
                 <div class="product-detail-header flex">
-                    <h5 class="text-md">{{ $product->name }}</h5>
+                    <h5 class="text-md">{{ $product->name . ' - ' . $product->size }}</h5>
                     {{-- <h5 class="ml-auto text-lg font-bold {{ $product->quantity > 0 ? 'text-black' : 'text-red-400'}}">{{ $product->quantity }} Left</h5> --}}
                 </div>
                 <div class="flex">
