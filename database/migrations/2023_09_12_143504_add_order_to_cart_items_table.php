@@ -14,6 +14,7 @@ return new class extends Migration
     {
         Schema::table('cart_items', function (Blueprint $table) {
             $table->foreignIdFor(Order::class)->nullable();
+            $table->bigInteger('returned_quantity')->nullable();
         });
     }
 

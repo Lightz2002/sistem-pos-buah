@@ -2,10 +2,11 @@
 
 namespace App\Livewire;
 
+use App\Exports\UserExport;
 use App\Models\User;
 use App\View\Components\Column;
 use Illuminate\Database\Eloquent\Builder;
-
+use Maatwebsite\Excel\Facades\Excel;
 
 class UsersTable extends Table
 {
@@ -30,4 +31,11 @@ class UsersTable extends Table
         ];
     }
 
+    public function export()
+    {
+        $user = $this->query();
+        // Nomor jual, nama customer, type motor, plat, warna, harga, dp, angsuran, sama Jangka waktu prosesnya berapa lama
+        // sales_code, customer_name, motor_type, motor_plate_number, motor_color, motor_price, motor_dp, motor_installment_amount,
+        return Excel::download(new UserExport($user), 'customer.xlsx');
+    }
 }

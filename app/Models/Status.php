@@ -28,10 +28,32 @@ class Status extends Model
         $this->casts = array_merge($this->casts, $this->traitCasts);
     }
 
-    public function scopePaid($query) {return $query->where('name', 'paid');}
-    public function scopeRejected($query) {return $query->where('name', 'rejected');}
-    public function scopeReceived($query) {return $query->where('name', 'received');}
-    public function scopeVerifying($query) {return $query->where('name', 'verifying');}
-    public function scopeDelivering($query) {return $query->where('name', 'delivering');}
-    public function scopeCompleted($query) {return $query->where('name', 'completed');}
+    public function scopePaid($query)
+    {
+        return $query->where('name', 'paid');
+    }
+    public function scopeRejected($query)
+    {
+        return $query->where('name', 'rejected');
+    }
+    public function scopeReceived($query)
+    {
+        return $query->where('name', 'received');
+    }
+    public function scopeVerifying($query)
+    {
+        return $query->where('name', 'verifying');
+    }
+    public function scopeDelivering($query)
+    {
+        return $query->where('name', 'delivering');
+    }
+    public function scopeCompleted($query)
+    {
+        return $query->where('name', 'completed');
+    }
+    public function scopeReturned($query)
+    {
+        return $query->where('name', 'returned');
+    }
 }

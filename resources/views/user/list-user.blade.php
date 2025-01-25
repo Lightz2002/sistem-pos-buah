@@ -15,7 +15,7 @@
                 <h3 class="mb-4 text-lg font-bold text-gray-700 dark:text-gray-300">User List</h3>
 
                 <!-- List Navbar -->
-                <livewire:users-table />
+                <livewire:users-table exportButton="{{ true }}" />
             </div>
         </div>
     </div>

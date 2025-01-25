@@ -16,7 +16,7 @@
                     </div>
 
                     <div>
-                        <h3 class="mb-2 text-sm text-gray-400">Veriying Order</h3>
+                        <h3 class="mb-2 text-sm text-gray-400">Verifying Order</h3>
                         <h5 class="text-3xl">{{ $data->verifyingOrder }}</h5>
                     </div>
                 </div>

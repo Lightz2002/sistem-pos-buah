@@ -29,6 +29,20 @@
         <x-input-error :messages="$errors->get('role')" class="mt-2" />
     </div>
 
+    <div>
+        <x-input-label for="phone_no" :value="__('Phone Number')" />
+        <x-text-input id="phone_no" name="phone_no" :value="old('phone_no', $user->phone_no)" type="text" class="mt-1 block w-full"
+            autocomplete="phone_no" />
+        <x-input-error :messages="$errors->get('phone_no')" class="mt-2" />
+    </div>
+
+    <div>
+        <x-input-label for="address" :value="__('Address')" />
+        <x-text-input id="address" name="address" :value="old('address', $user->address)" type="text" class="mt-1 block w-full"
+            autocomplete="address" />
+        <x-input-error :messages="$errors->get('address')" class="mt-2" />
+    </div>
+
     <div class="flex items-center gap-4">
         <x-primary-button>{{ __('Save') }}</x-primary-button>
 

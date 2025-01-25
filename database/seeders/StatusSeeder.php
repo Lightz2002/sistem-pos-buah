@@ -29,6 +29,9 @@ class StatusSeeder extends Seeder
             [
                 'name' => 'received'
             ],
+            [
+                'name' => 'returned'
+            ],
         ]);
     }
 }

@@ -156,5 +156,5 @@ return [
 
     'pagination_theme' => 'tailwind',
 
-    'debug' => true,
+    'debug' => false,
 ];

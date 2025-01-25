@@ -7,6 +7,7 @@
         <div>
             <h3 class="text-xl mb-2">{{ $item->quantity . ' ' . strtoupper($item->product->unit) 
             . ' ' .$item->product->name }}</h3>
+            <p>Retur: {{ $item->returned_quantity . ' ' . strtoupper($item->product->unit) }} </p>
         </div>
 
         <h5 class="text-teal-400 font-bold mb-4 ml-auto text-right text-lg">{{ 'Rp' . number_format($item->subtotal_amount) }}</h5>

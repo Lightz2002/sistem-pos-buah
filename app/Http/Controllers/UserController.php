@@ -32,11 +32,11 @@ class UserController extends Controller
         ]);
     }
 
-    public function store(Request $request): RedirectResponse 
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -63,16 +63,18 @@ class UserController extends Controller
         ]);
     }
 
-    public function update(Request $request, User $user): RedirectResponse 
+    public function update(Request $request, User $user): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class)->ignore(request()->route('user')->id)],
-            'role' => ['required', 'int']
+            'role' => ['required', 'int'],
         ]);
 
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->phone_no = $request->phone_no;
+        $user->address = $request->address;
 
         $user->assignRole($request->role);
 
@@ -89,6 +91,5 @@ class UserController extends Controller
 
 
         return response()->json(['message' => 'User Deleted Successfully']);
-
     }
 }

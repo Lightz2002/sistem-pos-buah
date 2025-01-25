@@ -24,7 +24,7 @@
 
                     </div>
 
-                    <div>
+                    {{-- <div>
                         <x-input-label for="account_no" :value="__('Account No')" />
                         <x-text-input id="account_no" name="account_no" model="form.account_no" type="text" class="mt-1 block w-full"
                             autocomplete="account_no" />
@@ -44,7 +44,7 @@
                         <x-text-input id="account_bank" name="account_bank" model="form.account_bank" type="text" class="mt-1 block w-full"
                             autocomplete="account_bank" />
                         <x-input-error :messages="$errors->get('form.account_bank')" class="mt-2" />
-                    </div>
+                    </div> --}}
 
 
                     <div class="flex items-center">
@@ -73,7 +73,7 @@
                         @if ($this->form->payment_proof)
                             <img src="{{ $this->form->payment_proof->temporaryUrl() }}" class="w-52 h-48 object-cover">
                         @endif
-                        <x-text-input id="payment_proof" name="payment_proof" model="form.payment_proof" type="file" class="mt-1 block w-full"
+                        <x-text-input id="payment_proof" name="payment_proof" model="form.payment_proof" type="file" accept="image/png, image/jpeg, image/jpg" class="mt-1 block w-full"
                             autocomplete="payment_proof" />
                         <x-input-error :messages="$errors->get('form.payment_proof')" class="mt-2" />
                     </div>

@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Adjust the size as needed */
+
+.custom-swal-popup {
+    width: 700px; /* Adjust the width */
+    height: auto; /* Adjust the height */
+}
+
+.return-table {
+    border-spacing: 20px;
+}

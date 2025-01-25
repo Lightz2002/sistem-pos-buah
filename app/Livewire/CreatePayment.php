@@ -33,9 +33,9 @@ class CreatePayment extends Component
         $this->form->payment_proof = $imagePath;
 
         $payment = new Payment();
-        $payment->account_no = $this->form->account_no;
-        $payment->account_name = $this->form->account_name;
-        $payment->account_bank = $this->form->account_bank;
+        $payment->account_no = '';
+        $payment->account_name =  '';
+        $payment->account_bank =  '';
         $payment->date = $this->form->date;
         $payment->payment_proof = $this->form->payment_proof;
         $payment->user_id = auth()->user()->id;
@@ -43,12 +43,13 @@ class CreatePayment extends Component
 
 
         // get current cart items
-        $cartItems = CartItems::self();
+        $cartItems = CartItems::self()->notCheckOut();
 
         // create order
         $order = new Order();
         $order->date = $payment->date;
         $order->customer_address = $this->form->customer_address;
+        $order->is_pick_up = $this->form->is_pick_up;
         $order->payment_id = $payment->id;
         $order->total_amount = $cartItems->get()->sum(function ($item) {
             return $item->quantity * $item->product->price;

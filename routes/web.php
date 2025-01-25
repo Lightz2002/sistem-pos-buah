@@ -66,7 +66,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/orders', ListOrder::class)->name('orders');
     Route::get('/orders/{order}', ShowOrder::class)->name('orders.show');
     Route::post('/orders/{order}/status', [OrderController::class, 'changeStatus'])->name('orders.changeStatus');
+    Route::get('/orders/{order}/orderitems', [OrderController::class, 'getOrderItem'])->name('orders.getOrderItem');
+    Route::post('/orders/{order}/orderitems', [OrderController::class, 'updateReturnQuantity'])->name('orders.updateReturnQuantity');
 });
 
+// test comment for acchen pull request
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

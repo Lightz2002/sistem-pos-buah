@@ -15,6 +15,7 @@ abstract class Table extends Component
     public $search = '';
     public $filterComponent = '';
     public $createUrl = '';
+    public $exportButton = false;
 
     protected $queryString = [
         'search' => ['except' => ''],

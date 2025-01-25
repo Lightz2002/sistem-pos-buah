@@ -2,12 +2,13 @@
 
 namespace App\Livewire;
 
+use App\Exports\OrderExport;
 use App\Models\Order;
 use App\Models\User;
 use App\View\Components\Column;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Attributes\Url;
-
+use Maatwebsite\Excel\Facades\Excel;
 
 class OrderTable extends Table
 {
@@ -50,7 +51,15 @@ class OrderTable extends Table
         return $columns;
     }
 
-    public function filterStatus(string $status) {
+    public function filterStatus(string $status)
+    {
         $this->status = $status;
+    }
+
+    public function export()
+    {
+        $orders = $this->query();
+
+        return Excel::download(new OrderExport($orders), 'orders.xlsx');
     }
 }

@@ -47,9 +47,9 @@
     <div>
         <x-input-label for="image" :value="__('Image')" />
         @if ($this->form->image)
-            <img src="{{ $this->form->image->temporaryUrl() }}">
+            <img src="{{ $this->form->image->temporaryUrl() ?? '' }}">
         @endif
-        <x-text-input id="image" name="image" model="form.image" type="file" class="mt-1 block w-full"
+        <x-text-input id="image" name="image" model="form.image" type="file" accept="image/png, image/jpeg, image/jpg" class="mt-1 block w-full"
             autocomplete="image" />
         <x-input-error :messages="$errors->get('form.image')" class="mt-2" />
     </div>

@@ -30,30 +30,35 @@ class Order extends Model
         $this->casts = array_merge($this->casts, $this->traitCasts);
     }
 
-    public function payment(): BelongsTo {
+    public function payment(): BelongsTo
+    {
         return $this->belongsTo(Payment::class);
     }
 
-    public function customer(): BelongsTo {
+    public function customer(): BelongsTo
+    {
         return $this->belongsTo(User::class, 'customer_id');
     }
 
-    public function order_items(): HasMany {
+    public function order_items(): HasMany
+    {
         return $this->hasMany(CartItems::class);
     }
 
-    public function scopeToday($query) {
+    public function scopeToday($query)
+    {
         return $query->where('date', now()->format('Y-m-d'));
     }
 
-    public function scopeFilter($query, string $search, string $status) {
+    public function scopeFilter($query, string $search, string $status)
+    {
         $query = $query->join('status', 'status.id', '=', 'orders.status_id')
             ->join('users', 'users.id', '=', 'orders.customer_id')
-            ->select(DB::raw("orders.*, users.name AS customer_name,status.name AS status, CONCAT('Rp', FORMAT(orders.total_amount, 0)) AS total"))
+            ->select(DB::raw("orders.*, IF(is_pick_up, 'Pick Up', orders.customer_address) customer_address, users.name AS customer_name,status.name AS status, CONCAT('Rp', FORMAT(orders.total_amount, 0)) AS total"))
             ->where(function ($query) use ($search) {
                 $query->where('date', 'like', '%' . $search . '%')
-                ->orWhere('customer_address', 'like', '%' . $search . '%')
-                ->orWhere('users.name', 'like', '%' . $search . '%');
+                    ->orWhere('customer_address', 'like', '%' . $search . '%')
+                    ->orWhere('users.name', 'like', '%' . $search . '%');
             });
 
         if ($status !== 'all') $query->where('status.name', 'like', '%' . $status . '%');

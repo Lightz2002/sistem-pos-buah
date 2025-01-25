@@ -21,7 +21,8 @@ class ListProduct extends Component
         'page' => ['except' => 1],
     ];
 
-    public function mount() {
+    public function mount()
+    {
         $this->setCreateUrl();
     }
 
@@ -32,7 +33,8 @@ class ListProduct extends Component
         ]);
     }
 
-    private function setCreateUrl() {
+    private function setCreateUrl()
+    {
         if (auth()->user()->hasRole('customer')) $this->createUrl = '';
         else $this->createUrl = '/products/create';
     }
